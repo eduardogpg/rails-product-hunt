@@ -30,9 +30,9 @@ class ProductsController < ApplicationController
 
     def update
         if @product.update(product_params)
-            redirect_to edit_product_path, notice: "Producto actualizado exitosamente."
+            redirect_to @product, notice: "Producto actualizado exitosamente."
         else
-            redirect_to new_product_path, notice: "Lo sentimos, no fue posible actualizar el producto."
+            redirect_to @product, notice: "Lo sentimos, no fue posible actualizar el producto."
         end
     end
 

@@ -26,6 +26,13 @@
   </div>
 </section>
 
+<hr>
+<section class="relative py-10">
+    <form action="#" method="POST">
+        <input type="submit" class="cursor-pointer block lg:inline-block px-5 py-3 lg:mr-3 mb-3 lg:mb-0 text-sm text-center bg-red-500 hover:bg-red-600 text-white font-semibold border border-red-500 hover:border-red-600 rounded transition duration-200" value="Visitar Página Web 🚀">
+        <input type="submit" class="cursor-pointer block lg:inline-block px-5 py-3 text-sm text-center font-semibold text-red-500 hover:text-white hover:bg-red-500 border border-red-500 hover:border-red-600 rounded transition duration-200" value="Votar 👍">
+    </form>
+</section>
 
 <section class="relative py-10">
   <div class="container">
@@ -36,7 +43,11 @@
 <hr>
 <section class="relative">
   <div class="container mb-4">
+    <% if @comments.count > 0 %>
         <h2 class="mb-6 mt-4 text-2xl font-semibold font-heading">Lo que otros usuarios dicen.</h2>
         <%= render partial:'comments/comment', collection:@comments, as: :comment %>
+    <% else %>
+        <h2 class="mb-6 mt-4 text-2xl font-semibold font-heading">Se el primero en comentar.</h2>
+    <% end %>
   </div>
 </section>
