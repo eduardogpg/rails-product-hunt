@@ -1,0 +1,5 @@
+<section>
+    <% flash.each do |type, msg| %>
+        <%= render partial:"partials/message", locals: {message: msg} %>
+    <% end %>
+</section>

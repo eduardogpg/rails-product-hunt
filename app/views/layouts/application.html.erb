@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= stylesheet_link_tag "tailwind.min.css" %>
+    <script src="js/main.js"></script>
+  </head>
+
+  <body>
+        <%= render "partials/messages" %>
+        <%= render "partials/navbar" %>
+        
+        <section class="">
+            <div class="container px-4 mx-auto">
+                <%= yield %>
+            </div>
+        </section>
+  </body>
+</html>
