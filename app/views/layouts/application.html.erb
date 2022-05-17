@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <%= stylesheet_link_tag "tailwind.min.css" %>
+
     <script src="js/main.js"></script>
   </head>
 
@@ -21,3 +22,20 @@
         </section>
   </body>
 </html>
+
+<script>
+    
+    const close = document.querySelectorAll('.message-close');
+    const messages = document.querySelectorAll('.messages');
+
+    if (close.length) {
+        for (var i = 0; i < close.length; i++) {
+            close[i].addEventListener('click', function() {
+                for (var j = 0; j < messages.length; j++) {
+                    messages[j].style.display = 'none';
+                }
+            });
+        }
+    }
+
+</script>
