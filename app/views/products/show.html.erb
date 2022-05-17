@@ -1,9 +1,8 @@
 <section class="relative py-10 overflow-x-hidden">
   <div class="container  mx-auto">
     <div class="relative flex flex-wrap items-center -mx-4">
-      <img class="hidden xl:block absolute top-0 right-0 mt-40 -mr-32" src="zeus-assets/icons/dots/red-dot-right-shield.svg" alt="">
       <div class="relative w-full lg:w-1/2 px-4 pb-12 lg:pb-0">
-        <div class="max-w-md">
+        
           <h2 class="mb-6 lg:mb-10 text-4xl font-semibold font-heading"><%= @product.title %></h2>
           <p class="mb-6 lg:mb-10 text-xl text-gray-500">
             <%= @product.description %>
@@ -18,8 +17,7 @@
                 </div>
             <% end %>
           </div>
-          <%= link_to 'Editar', edit_product_path(@product), class:"inline-block px-10 py-4 bg-red-400 hover:bg-red-300 text-sm text-white font-medium leading-normal rounded transition duration-200" %>
-        </div>
+          <%= link_to 'Editar', edit_product_path(@product), class:"cursor-pointer inline-block  py-4 px-8 leading-none text-white bg-red-600 hover:bg-red-700 font-semibold rounded shadow" %>
       </div>
       <div class="w-full lg:w-1/2 px-4">
         <%= image_tag @product.image, class:"w-full h-112 mx-auto mb-6 md:mb-0 rounded-xl object-cover" %>
