@@ -1,44 +1,44 @@
-<section class="relative">
-    <div class="container px-4 mx-auto">
-        <div class="mb-6 py-6 px-6 lg:pl-12 lg:pr-6 bg-gray-50 rounded-xl">
-            <div class="flex flex-wrap -mx-4">
-                <div class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
-                    <div class="max-w-xl lg:pt-6">
-                        <div class="max-w-md mb-10">
-                            <h2 class="text-3xl md:text-4xl font-semibold font-heading"><%= @product.title %></h2>
-                        </div>
-                        <p class="mb-10 text-xl text-gray-500">
-                            <%= @product.description %>
-                        </p>
-                        <ul class="flex flex-wrap text-left text-base lg:text-lg">
-                            <% @product.categories.each do |category| %>
-                                <li class="w-full lg:w-1/2 mb-6 flex items-center">
-                                    <svg class="mr-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.67 0H14.34C17.73 0 20 2.38 20 5.92V14.091C20 17.62 17.73 20 14.34 20H5.67C2.28 20 0 17.62 0 14.091V5.92C0 2.38 2.28 0 5.67 0ZM9.43 12.99L14.18 8.24C14.52 7.9 14.52 7.35 14.18 7C13.84 6.66 13.28 6.66 12.94 7L8.81 11.13L7.06 9.38C6.72 9.04 6.16 9.04 5.82 9.38C5.48 9.72 5.48 10.27 5.82 10.62L8.2 12.99C8.37 13.16 8.59 13.24 8.81 13.24C9.04 13.24 9.26 13.16 9.43 12.99Z" fill="#45C1FF"></path>
-                                    </svg>
-                                    <p class="font-medium"><%= category.title %></p>
-                                </li>
-                            <% end %>
-                        </ul>
-                    </div>
+<section class="relative py-10 overflow-x-hidden">
+  <div class="container  mx-auto">
+    <div class="relative flex flex-wrap items-center -mx-4">
+      <img class="hidden xl:block absolute top-0 right-0 mt-40 -mr-32" src="zeus-assets/icons/dots/red-dot-right-shield.svg" alt="">
+      <div class="relative w-full lg:w-1/2 px-4 pb-12 lg:pb-0">
+        <div class="max-w-md">
+          <h2 class="mb-6 lg:mb-10 text-4xl font-semibold font-heading"><%= @product.title %></h2>
+          <p class="mb-6 lg:mb-10 text-xl text-gray-500">
+            <%= @product.description %>
+          </p>
+          <div class="mb-10 border rounded-lg">
+            <% @product.categories.limit(4).each do |category| %>
+                <div class="flex p-4 border-b">
+                    <svg class="mr-4 mt-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.67 0H14.34C17.73 0 20 2.38 20 5.92V14.091C20 17.62 17.73 20 14.34 20H5.67C2.28 20 0 17.62 0 14.091V5.92C0 2.38 2.28 0 5.67 0ZM9.43 12.99L14.18 8.24C14.52 7.9 14.52 7.35 14.18 7C13.84 6.66 13.28 6.66 12.94 7L8.81 11.13L7.06 9.38C6.72 9.04 6.16 9.04 5.82 9.38C5.48 9.72 5.48 10.27 5.82 10.62L8.2 12.99C8.37 13.16 8.59 13.24 8.81 13.24C9.04 13.24 9.26 13.16 9.43 12.99Z" fill="#45C1FF"></path>
+                    </svg>
+                    <h3 class="font-semibold font-heading"><%= category.title %></h3>
                 </div>
-                <div class="w-full lg:w-1/3 px-4">
-                    <div class="h-80 lg:h-40">
-                        <%= image_tag @product.image %>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <%= link_to "Editar", edit_product_path(@product), class:"inline-block w-full md:w-auto mb-2 mr-4 py-4 px-8 text-sm font-medium leading-normal bg-red-400 hover:bg-red-300 text-white rounded transition duration-200" %>
-            </div>
+            <% end %>
+          </div>
+          <%= link_to 'Editar', edit_product_path(@product), class:"inline-block px-10 py-4 bg-red-400 hover:bg-red-300 text-sm text-white font-medium leading-normal rounded transition duration-200" %>
         </div>
-
-        <div>
-            <%= render partial:"comments/form" %>
-        </div>
-        <hr class="mt-4 mb-4">
-        <div>
-            <%= render partial: "comments/comment", collection: @comments, as: :comment %>
-        </div>
+      </div>
+      <div class="w-full lg:w-1/2 px-4">
+        <%= image_tag @product.image, class:"w-full h-112 mx-auto mb-6 md:mb-0 rounded-xl object-cover" %>
+      </div>
     </div>
+  </div>
+</section>
+
+
+<section class="relative py-10">
+  <div class="container">
+        <h2 class="mb-6 text-2xl font-semibold font-heading">Deja tu comentario</h2>
+        <%= render partial:'comments/form'%>
+  </div>
+</section>
+<hr>
+<section class="relative">
+  <div class="container mb-4">
+        <h2 class="mb-6 mt-4 text-2xl font-semibold font-heading">Lo que otros usuarios dicen.</h2>
+        <%= render partial:'comments/comment', collection:@comments, as: :comment %>
+  </div>
 </section>

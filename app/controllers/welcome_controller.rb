@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
     def index
-        return redirect_to products_path, notice:'Example'
+        return redirect_to products_path
     end
 
 end

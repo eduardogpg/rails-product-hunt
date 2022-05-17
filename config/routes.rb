@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
     # post 'products', to: "products#create"
     # patch 'products/:id', to: 'products#update', as: :product
-
+    
+    resources :categories
     resources :products do 
         get 'search', on: :collection 
         resources 'comments', only: [:create]
