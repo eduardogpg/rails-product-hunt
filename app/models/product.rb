@@ -8,6 +8,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  slug        :string
+#  url         :string
 #
 class Product < ApplicationRecord
     extend FriendlyId
@@ -18,6 +19,8 @@ class Product < ApplicationRecord
     has_many :comments, dependent: :delete_all
     has_many :product_categories, dependent: :delete_all
     has_many :categories, -> { where(visible: true) }, through: :product_categories
+
+    has_many :votes
 
     accepts_nested_attributes_for :categories
 

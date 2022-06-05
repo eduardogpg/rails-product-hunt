@@ -13,6 +13,18 @@ class ProductsController < ApplicationController
 
     def create
         @product = Product.create(product_params)
+        
+        respond_to do |format|
+            if @product.persisted?
+                redirect_to products_path, notice: "Nuevo producto creado."
+            else
+                format.html { render :new, status: :unprocessable_entity }
+            end
+        end
+    end
+
+    def create_two
+        @product = Product.create(product_params)
         if @product.persisted?
             redirect_to products_path, notice: "Nuevo producto creado."
         else
@@ -21,7 +33,7 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @comment = Comment.new(product:@product)
+        @comment = Comment.new
         @comments = @product.comments.order('id DESC')
     end
 
@@ -53,7 +65,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-        params.require(:product).permit(:title, :description, :image, category_ids: [] )
+        params.require(:product).permit(:title, :description, :image, :url, category_ids: [] )
     end
 
 end

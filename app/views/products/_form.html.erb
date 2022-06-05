@@ -1,4 +1,11 @@
 <%= form_with model:@product do |form| %>
+    
+    <% if @product.errors.any? %>
+        <% @product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+    <% end %>
+
     <div class="mb-4">
         <%= form.text_field :title, class:"appearance-none block w-full py-3 px-4  text-gray-700 bg-gry-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none", placeholder:'Title' %>
     </div>
@@ -7,6 +14,9 @@
     </div>
     <div class="mb-4">
         <%= form.file_field :image  %>
+    </div>
+    <div class="mb-4">
+        <%= form.text_field :url, class:"appearance-none block w-full py-3 px-4  text-gray-700 bg-gry-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none", placeholder:'URL project' %>
     </div>
     <hr>
     <div class="mt-4 mb-4">

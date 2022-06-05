@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-    
     # get 'products', to: "products#index"
     # get 'products/new', to: "products#new", as: :new_product
     # get 'products/search', to: 'products#search', as: :search_products
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
     resources :products do 
         get 'search', on: :collection 
         resources 'comments', only: [:create]
+        resources 'votes', only: [:create]
     end
 
     root "welcome#index"

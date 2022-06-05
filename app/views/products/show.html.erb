@@ -28,10 +28,17 @@
 
 <hr>
 <section class="relative py-10">
-    <form action="#" method="POST">
-        <input type="submit" class="cursor-pointer block lg:inline-block px-5 py-3 lg:mr-3 mb-3 lg:mb-0 text-sm text-center bg-red-500 hover:bg-red-600 text-white font-semibold border border-red-500 hover:border-red-600 rounded transition duration-200" value="Visitar Página Web 🚀">
-        <input type="submit" class="cursor-pointer block lg:inline-block px-5 py-3 text-sm text-center font-semibold text-red-500 hover:text-white hover:bg-red-500 border border-red-500 hover:border-red-600 rounded transition duration-200" value="Votar 👍">
-    </form>
+    <div class='inline-flex'>
+        <%= link_to 'Visitar sitio web 🚀', @product.url, class:"cursor-pointer block lg:inline-block px-5 py-3 lg:mr-3 mb-3 lg:mb-0 text-sm text-center bg-red-500 hover:bg-red-600 text-white font-semibold border border-red-500 hover:border-red-600 rounded transition duration-200" %>
+    </div>
+    <div class='inline-flex'>
+        <%= form_with model:[@product, Vote.new], data: { type: :json } do |f| %>
+            <%= f.submit 'Votar 👍', class:"cursor-pointer block lg:inline-block px-5 py-3 text-sm text-center font-semibold text-red-500 hover:text-white hover:bg-red-500 border border-red-500 hover:border-red-600 rounded transition duration-200"%>
+        <% end %>
+    </div>
+    <section class="my-4" data-controller="votable"​>
+    </section>
+
 </section>
 
 <section class="relative py-10">
@@ -40,6 +47,7 @@
         <%= render partial:'comments/form'%>
   </div>
 </section>
+
 <hr>
 <section class="relative">
   <div class="container mb-4">
